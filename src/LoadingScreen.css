@@ -1,0 +1,457 @@
+/* loading screen animation*/
+
+
+.loadingWindow2 {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+  font-size: 12px;
+  color: #fffefe;
+  z-index: 30 !important;
+  background-color: rgb(0, 0, 0);
+  transition: 0.5s;
+  display: none;
+}
+
+bodY {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+.wave {
+  width: 5px;
+  height: 30vh;
+  background: linear-gradient(45deg, rgb(8, 0, 255), #fff);
+  margin: 10px;
+  animation: wave 1s linear infinite;
+  border-radius: 20px;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.05s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.1s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.15s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.wave:nth-child(6) {
+  animation-delay: 0.25s;
+}
+.wave:nth-child(7) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(8) {
+  animation-delay: 0.35s;
+}
+.wave:nth-child(9) {
+  animation-delay: 0.4s;
+}
+.wave:nth-child(10) {
+  animation-delay: 0.45s;
+}
+.wave:nth-child(11) {
+  animation-delay: 0.5s;
+}
+.wave:nth-child(12) {
+  animation-delay: 0.55s;
+}
+.wave:nth-child(13) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(14) {
+  animation-delay: 0.65s;
+}
+.wave:nth-child(15) {
+  animation-delay: 0.7s;
+}
+.wave:nth-child(16) {
+  animation-delay: 0.75s;
+}
+.wave:nth-child(17) {
+  animation-delay: 0.8s;
+}
+.wave:nth-child(18) {
+  animation-delay: 0.85s;
+}
+.wave:nth-child(19) {
+  animation-delay: 0.9s;
+}
+.wave:nth-child(20) {
+  animation-delay: 0.95s;
+}
+
+
+@keyframes wave {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+/* loading screen */
+
+
+
+/* testing animated notes */
+bodt {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  background-color: black;
+  color: white;
+}
+
+.muzieknootjes {
+  display: block;
+  margin: auto;
+  position: relative;
+  width: 50%;
+  min-width: 300px;
+  height: 200px;
+  border: 0px solid #000;
+}
+
+.noot-1,
+.noot-2,
+.noot-3,
+.noot-4,
+.noot-5,
+.noot-6,
+.noot-7,
+.noot-8,
+.noot-9,
+.noot-10,
+.noot-11,
+.noot-12,
+.noot-13,
+.noot-14,
+.noot-15,
+.noot-16,
+.noot-17,
+.noot-18,
+.noot-19,
+.noot-20,
+.noot-21,
+.noot-22,
+.noot-23,
+.noot-24,
+.noot-25 {
+  position: absolute;
+  animation: notes 3s infinite linear;
+  font-size: 35px;
+  opacity: 0;
+}
+
+.noot-1 {
+  /* color:#ff0000; */
+  top: 100px;
+  left: -30%;
+  animation-delay: 0.1s;
+}
+
+.noot-2 {
+  /* color:#fff703; */
+  top: 100px;
+  left: -20%;
+  animation-delay: 0.5s;
+}
+
+.noot-3 {
+  /* color:#020aff; */
+  top: 100px;
+  left: -10%;
+  animation-delay: 0.2s;
+}
+
+.noot-4 {
+  /* color:#2fff00; */
+  top: 100px;
+  left: 0%;
+  animation-delay: 1.8s;
+}
+
+.noot-5 {
+  /* color:#ff00b7; */
+  top: 100px;
+  left: 10%;
+  animation-delay: 2.3s;
+}
+
+.noot-6 {
+  /* color:#ff00b7; */
+  top: 100px;
+  left: 20%;
+  animation-delay: 0.9s;
+}
+
+.noot-7 {
+  /* color:#ff00b7; */
+  top: 100px;
+  left: 30%;
+  animation-delay: 1.6s;
+}
+
+.noot-8 {
+  /* content: ' \266B'; */
+  /* color:#ffffff; */
+  top: 100px;
+  left: 40%;
+  animation-delay: 2.1s;
+}
+
+.noot-9 {
+  /* color:#640606; */
+  top: 100px;
+  left: 50%;
+  animation-delay: 1.4s;
+}
+
+.noot-10 {
+  /* color:#df0000; */
+  top: 100px;
+  left: 60%;
+  animation-delay: 0.8s;
+}
+
+.noot-11 {
+  /* color:#ffffff; */
+  top: 100px;
+  left: -35%;
+  animation-delay: 2.2s;
+}
+
+.noot-12 {
+  /* color:#ffffff; */
+  top: 230px;
+  left: 40%;
+  animation-delay: 0.9s;
+}
+
+.noot-13 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:50%;
+  animation-delay: 1.1s;
+}
+
+.noot-14 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:60%;
+  animation-delay: 2.3s;
+}
+
+.noot-15 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:70%;
+  animation-delay: 1.6s;
+}
+
+.noot-16 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:80%;
+  animation-delay: 2.4s;
+}
+
+.noot-17 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:90%;
+  animation-delay: 0.2s;
+}
+
+.noot-18 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:100%;
+  animation-delay: 1.9s;
+}
+
+.noot-19 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:110%;
+  animation-delay: 0.1s;
+}
+
+.noot-20 {
+  /* color:#ffffff; */
+  top: 230px;
+  left: 25%;
+  animation-delay: 2.4s;
+}
+
+.noot-21 {
+  /* color:#ffffff; */
+  top: 230px;
+  left: 20%;
+  animation-delay: 0.7s;
+}
+
+.noot-22 {
+  /* color:#ffffff; */
+  top: 230px;
+  left: 30%;
+  animation-delay: 1.7s;
+}
+
+.noot-23 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:45%;
+  animation-delay: 0.7s;
+}
+
+.noot-24 {
+  /* color:#ffffff; */
+  top: 230px;
+  left:65%;
+  animation-delay: 2.3s;
+}
+
+.noot-25 {
+  /* color:#ffffff; */
+  top: 100px;
+  left: -40%;
+  animation-delay: 0.9s;
+}
+
+
+@keyframes notes {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) translate(50%, -50%);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.5) translate(100%, -100%);
+  }
+  100% {
+    transform: scale(1.5) translate(100%, -100%);
+    opacity: 0;
+  }
+}
+
+/*testing animated notes */
+
+
+/* dancing notes*/
+
+bodNotes {
+	background: black;
+	}
+
+	h1 {
+	/* position: absolute; */
+	/* top: 50%; */
+	/* left: 10%; */
+	}
+
+	h1 span {
+	/* color: red; */
+
+	padding: 5px;
+	display: table-cell;
+
+
+
+  animation: animate 1s infinite;
+	}
+
+	/* Specify the animation keyframes
+	to be used to move the letters */
+	@keyframes animate {
+	0% {
+		transform: translateY(15px);
+	}
+
+	50% {
+		transform: translateY(-15px);
+	}
+
+	100% {
+		transform: translateY(15px);
+	}
+	}
+
+	/* Specify a slight delay for
+	each of the letters */
+	h1 span:nth-child(1) {
+	animation-delay: 0.05s;
+	}
+
+	h1 span:nth-child(2) {
+	animation-delay: 0.1s;
+	}
+
+	h1 span:nth-child(3) {
+	animation-delay: 0.15s;
+	}
+
+	h1 span:nth-child(4) {
+	animation-delay: 0.2s;
+	}
+
+	h1 span:nth-child(5) {
+	animation-delay: 0.25s;
+	}
+
+	h1 span:nth-child(6) {
+	animation-delay: 0.3s;
+	}
+
+	h1 span:nth-child(7) {
+	animation-delay: 0.35s;
+	}
+
+	h1 span:nth-child(8) {
+	animation-delay: 0.4s;
+	}
+
+	h1 span:nth-child(9) {
+	animation-delay: 0.45s;
+	}
+
+	h1 span:nth-child(10) {
+	animation-delay: 0.5s;
+	}
+
+	h1 span:nth-child(11) {
+	animation-delay: 0.55s;
+	}
+
+	h1 span:nth-child(12) {
+	animation-delay: 0.6s;
+	}
+
+	h1 span:nth-child(13) {
+	animation-delay: 0.65s;
+	}
+
+  /* dancing notes*/

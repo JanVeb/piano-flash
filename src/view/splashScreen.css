@@ -1,0 +1,189 @@
+.additionalButtonsWindow {
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: fixed;
+    z-index: 20;
+    color: white;
+    background: linear-gradient( to bottom, #3b66d1, #a1d3f5);
+    background-size: cover;
+  }
+
+  .closeSplashAni {
+    display: none;
+    /* background: linear-gradient( to bottom, #002172, #479CD5); */
+    background: #00207251;
+    /* background: none; */
+    width: 40px;
+    height: 40px;
+  }
+
+  .piPlay {
+    display: block;
+    /* background: linear-gradient( to bottom, #002172, #479CD5); */
+    background: #00207251;
+    /* background: none; */
+    width: 40px;
+    height: 40px;
+  }
+
+bodyW{
+    background:#444;
+  }
+  .windChimeContainer{
+    position:relative;
+    margin:auto;
+    display:flex;
+    width:90px;
+    min-height:300px;
+    max-height:300px;
+  }
+  .rope{
+    position:absolute;
+    margin:5px;
+    left:35px;
+    background:#AB864F;
+    height:250px;
+    width:10px;
+  }
+  .chime1{
+    /* position:absolute;
+    top:15px;
+    left:5px;
+    margin:5px;
+    background:#EFEEEE;
+    height:75px;
+    width:15px; */
+  }
+  .chime2{
+
+  }
+  .chime3{
+
+  }
+  .chime4{
+
+  }
+  .chime5{
+
+}
+
+  .chime1,.chime2,.chime3,.chime4,.chime5{animation: sway 2s infinite linear;}
+
+  .chime1{animation: sway 15s infinite linear; animation-delay: 0.0s;}
+  .chime2{animation: sway 15s infinite linear; animation-delay: 0.1s;}
+  .chime3{animation: sway 15s infinite linear; animation-delay: 0.2s;}
+  .chime4{animation: sway 15s infinite linear; animation-delay: 0.3s;}
+  .chime5{animation: sway 15s infinite linear; animation-delay: 0.4s;}
+
+  /* .chime1{animation: sway 2s infinite linear;}
+  .chime2{animation: sway 1.3s infinite linear;}
+  .chime3{animation: sway 1.5s infinite linear;}
+  .chime4{animation: sway 1s infinite linear;}
+  .chime5{animation: sway 1.8s infinite linear;} */
+
+  .rope,.chunck{animation: sway2 2s infinite linear;}
+  .chimetop{
+    position:absolute;
+    margin:5px;
+    left:0px;
+    background:#6B5027;
+    height:10px;
+    width:80px;
+  }
+  .chimetoploop{
+    position:absolute;
+    margin:0px;
+    top:0px;
+    left:40px;
+    background:transparent;
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    border:solid #EFEEEE 2px;
+  }
+  .loop1,.loop2,.loop3,.loop4,.loop4{
+    position:absolute;
+    margin:5px;
+    top:8px;
+    background:transparent;
+    height:5px;
+    width:5px;
+    border-radius:50%;
+    border:solid #EFEEEE 2px;
+  }
+  .loop1{
+    left:8px;
+  }
+  .loop2{
+    left:26px;
+  }
+  .loop3{
+    left:45px;
+  }
+  .loop4{
+    left:63px;
+  }
+  .loop5{
+    left:81px;
+  }
+  .chunck{
+    position:absolute;
+    margin:5px;
+    top: 60px;
+    left:20px;
+    background:#6B5027;
+    height:10px;
+    width:40px;
+  }
+  
+  /* Standard syntax */
+  @keyframes sway {
+5% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+10% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+15% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+20% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+25% {transform: rotate3d(4, -3, -3, 0.15turn);;
+transform-origin: 5px 8px;}
+30% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+35% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+40% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+45% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+50% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+55% {transform: rotate3d(4, -3, -3, 0.15turn);;
+transform-origin: 5px 8px;}
+60% {transform: rotate3d(3, -2, -2, 0.1turn);;
+transform-origin: 5px 8px;}
+65% {transform: rotate3d(3, -2, -2, 0.15turn);;
+transform-origin: 5px 8px;}
+70% {transform: rotate3d(4, -3, -3, 0.1turn);;
+transform-origin: 5px 8px;}
+75% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+80% {transform: rotate3d(4, -3, -3, 0.1turn);;
+transform-origin: 5px 8px;}
+85% {transform: rotate3d(3, -2, -2, 0.15turn);;
+transform-origin: 5px 8px;}
+90% {transform: rotate3d(4, -3, -3, 0.1turn);;
+transform-origin: 5px 8px;}
+95% {transform: rotate3d(2, -1, -1, 0.05turn);;
+transform-origin: 5px 8px;}
+100% {transform: rotate3d(3, -2, -2, 0turn);;
+transform-origin: 5px 8px;}
+  }
+  @keyframes sway2 {
+    30% {transform: rotate3d(2, -1, -1, -0.2turn);;
+    transform-origin: 5px 8px;}
+    60%{transform: rotate(-3deg);
+    transform-origin: 5px 8px;}
+  }
+  

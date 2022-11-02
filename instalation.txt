@@ -1,0 +1,7 @@
+place piano-flash and osmd-exteended-master in same directory
+
+"osmd-extended": "file:../osmd-extended-master", //copy this import to package-json dependacies
+npm install
+in both directories
+npm start
+in piano-flash directory

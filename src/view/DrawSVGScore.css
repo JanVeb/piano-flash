@@ -1,0 +1,17 @@
+/* .darkMode{
+    background:black;
+    height:100vh;
+    background-image: url("../data/ForEliseSVG.js/forEliseSVG");
+    }
+    svg{ fill:black;}
+    .darkMode svg {fill:white;} */
+
+    .drawSVGScore {
+        overflow-y: scroll;
+        position: sticky;
+        top: 0;
+        left: 110;
+        margin-left: 60px;
+        margin-right: 60px;
+        font-size: 14px;
+    }
