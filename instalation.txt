@@ -1,7 +1,16 @@
+do everything in OS terminal not VS or other editor terminals
+
 place piano-flash and osmd-exteended-master in same directory
 
 "osmd-extended": "file:../osmd-extended-master", //copy this import to package-json dependacies
 npm install
-in both directories
+npm run build
+in osmd-extended-master directory
+
+after these two comands are finished run
+npm install
+in piano-flash directory
+
+then
 npm start
 in piano-flash directory
