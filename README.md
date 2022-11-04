@@ -43,3 +43,6 @@ npm install
 cd piano-flash
 npm start
 ```
+
+## Launch app in Chrome web browser
+[http://localhost:3000](http://localhost:3000)
