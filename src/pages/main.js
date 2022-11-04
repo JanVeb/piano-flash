@@ -24,6 +24,7 @@ import FeedbackWindow from '../components/FeedbackWindow'
 import TranslateNotes from '../view/LettersSheet'
 import UserInputWindowF from '../view/UserInputWindow'
 import AboutPage from './About'
+import LiveFeedback from '../view/LiveFeedback'
 
 // import MidiController from '../components/webmidi/WebMidi'
 // import { WebMidi } from 'webmidi';
@@ -282,6 +283,7 @@ export default function Main ({ darkMode, setDarkMode }) {
     <div>
       {/* <DrawSVGScore /> */}
       {/* <LogueSf2 /> */}
+      <LiveFeedback />
       <div id='infoTranslateNoteWindow' className='infoTranslateNoteWindow'>
         <p
           style={{
@@ -303,12 +305,12 @@ export default function Main ({ darkMode, setDarkMode }) {
             display: 'flex'
           }}
         >
-          <IonButton style={{ width: '50px', height: '40px' }}>
+          <button style={{ width: '50px', height: '40px' }}>
             <div
               className='noteCheck2'
               style={{ color: 'white', fontSize: '40px' }}
             ></div>
-          </IonButton>
+          </button>
         </div>
         <button
           style={{
@@ -341,14 +343,18 @@ export default function Main ({ darkMode, setDarkMode }) {
       </div>
 
       <div className='page' style={{ display: 'flex', height: scoreHeight }}>
-        <IonButton
+        <button
           id='scrollKeyboardButton'
           className='scrollKeyboardButton'
           component='span'
           onClick={scrollToTop}
         >
+          <div
+            className='compareArrows'
+            style={{ color: 'white', fontSize: '45px' }}
+          ></div>
           {/* <CompareArrows style={{ transform: 'rotate(90deg)' }} /> mIcon */}
-        </IonButton>
+        </button>
         {/* <div className="rectangle"> */}
         <ScoreDisplayAndPlayer
           OSMDoptions={OSMD_option}
@@ -361,23 +367,20 @@ export default function Main ({ darkMode, setDarkMode }) {
         {/* </div> */}
       </div>
       <div>
-        <IonButton
-          id='translateNotesButton'
-          onClick={window.OpenTranslateNotes}
-        >
+        <button id='translateNotesButton' onClick={window.OpenTranslateNotes}>
           {/* <p style={{fontSize: '20px'}}>♪</p><p>/C4</p> */}
           <div
             className='noteLeter'
             style={{ color: 'white', fontSize: '45px' }}
           ></div>
-        </IonButton>
-        {/* <IonButton
+        </button>
+        {/* <button
         id="infoTranslateNoteButton"
           className="infoTranslateNoteButton"
           onClick={OpenTranslateNoteInfoWindow}
         >
           <Info />
-        </IonButton> */}
+        </button> */}
         <SettingsMenu
           darkMode={darkMode}
           setDarkMode={setDarkMode}

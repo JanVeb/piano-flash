@@ -464,13 +464,15 @@ export default function AdditionalButtons ({ OpenTranslateNotes }) {
           right: '30px',
           top: '30px',
           // fontSize: "20px", //hide info button, as its set to position: fixed, it shows on piano keyboard
-          color: 'white'
+          color: 'white',
+          // fontWeight: 'bold',
+          fontSize: '26px'
         }}
         onClick={() => {
           closeSplashAn()
         }}
       >
-        {' '}
+        {'X'}
         {/* <Close /> mIcon */}
       </button>
     </div>

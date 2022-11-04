@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react'
 import { Piano, KeyboardShortcuts, MidiNumbers } from 'react-piano'
 import 'react-piano/dist/styles.css'
 
-// import DimensionsProvider from '../pages/DimensionsProvider';
+// import useWindowDimensions from '../pages/DimensionsProvider'
 import SoundfontProvider from '../pages/SoundfontProvider'
 
 // import HowlerFVPiano from '../components/howlerFVPiano/HowlerFVPiano';
@@ -380,58 +380,57 @@ export default function PianoController (props) {
   }
 
   return (
-    <div>
+    <div
+    // style={{ width: 'window.innerWidth()', height: 'window.innerHeight()' }}
+    >
       {/* <HowlerFVPiano /> */}
       {/*need this imort in order for window.noteOn from holwer works in SoundFontProvider */}
       {/* <DimensionsProvider> */}
-      {({ containerWidth, containerHeight }) => (
-        <SoundfontProvider
-          // instrumentName="Grand Piano"
-          // instrumentName="acoustic_grand_piano"
-          audioContext={audioContext}
-          // hostname={soundfontHostname}
-          render={({ playNote, stopNote }) => (
-            <Piano
-              noteRange={noteRange}
-              width={calcWidth(containerWidth, containerHeight)}
-              height={'10vh'}
-              playNote={playNote}
-              stopNote={stopNote}
-              onPlayNoteInput={onPlayNoteInput}
-              onStopNoteInput={onStopNoteInput}
-              keyboardShortcuts={keyboardShortcuts}
-              renderNoteLabel={({
-                keyboardShortcut,
-                midiNumber,
-                isActive,
-                isAccidental
-              }) =>
-                isAccidental === true ? null : (
-                  <div>
-                    <p> {renderNotes ? midiNumber : null}</p>
-                    <p
-                      style={{
-                        color:
-                          autoColorSet[
-                            window.midiToNote[midiNumber].replace(
-                              /[^a-z]/gi,
-                              ''
-                            )
-                          ]
-                      }}
-                    >
-                      {' '}
-                      {renderNotes ? window.midiToNote[midiNumber] : null}
-                    </p>
-                  </div>
-                )
-              }
-              // disabled={!props.soundFont}
-              className='PianoJanisTheme'
-            />
-          )}
-        />
-      )}
+      {/* {({ containerWidth, containerHeight }) => ( */}
+      <SoundfontProvider
+        // instrumentName="Grand Piano"
+        // instrumentName="acoustic_grand_piano"
+        audioContext={audioContext}
+        // hostname={soundfontHostname}
+        render={({ playNote, stopNote }) => (
+          <Piano
+            noteRange={noteRange}
+            // width={calcWidth(containerWidth, containerHeight)}
+            height={'10vh'}
+            playNote={playNote}
+            stopNote={stopNote}
+            onPlayNoteInput={onPlayNoteInput}
+            onStopNoteInput={onStopNoteInput}
+            keyboardShortcuts={keyboardShortcuts}
+            renderNoteLabel={({
+              keyboardShortcut,
+              midiNumber,
+              isActive,
+              isAccidental
+            }) =>
+              isAccidental === true ? null : (
+                <div>
+                  <p> {renderNotes ? midiNumber : null}</p>
+                  <p
+                    style={{
+                      color:
+                        autoColorSet[
+                          window.midiToNote[midiNumber].replace(/[^a-z]/gi, '')
+                        ]
+                    }}
+                  >
+                    {' '}
+                    {renderNotes ? window.midiToNote[midiNumber] : null}
+                  </p>
+                </div>
+              )
+            }
+            // disabled={!props.soundFont}
+            className='PianoJanisTheme'
+          />
+        )}
+      />
+      {/* )} */}
       {/* </DimensionsProvider> */}
     </div>
   )

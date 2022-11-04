@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../App.css'
 
 // import { PlayArrow, SkipPrevious, Pause, Spellcheck } from '@material-ui/icons'
 import { IonButton } from '@ionic/react'
@@ -179,7 +180,11 @@ export default function PlayerController ({ player, updateId, show_note }) {
         measureSelectedNotes2[cursorIndex][0].cL
     }
 
-    fluidDuration = measureSelectedNotes2[cursorIndex][0].rT / 30
+    fluidDuration =
+      (measureSelectedNotes2[cursorIndex + 1][0].rT -
+        measureSelectedNotes2[cursorIndex][0].rT) /
+      30 /
+      (GetTempo() / 100)
     cursorLeft = measureSelectedNotes2[cursorIndex][0].cL
     document.getElementById('cursorOnSVGScore').style.top =
       measureSelectedNotes2[cursorIndex][0].cT * OsmdSize() - 20 + 'px'
@@ -297,6 +302,13 @@ export default function PlayerController ({ player, updateId, show_note }) {
     }
   }
 
+  function GetTempo () {
+    let settings =
+      JSON.parse(localStorage.getItem('settings')) === null
+        ? {}
+        : JSON.parse(localStorage.getItem('settings'))
+    return settings['tempo']
+  }
   function PlayFunc (measureSelectedNotes2) {
     index++
 
@@ -314,11 +326,16 @@ export default function PlayerController ({ player, updateId, show_note }) {
       } else {
         setTimeout(
           () => PlayFunc(measureSelectedNotes2),
-          measureSelectedNotes2[index][0].rT
+          (measureSelectedNotes2[cursorIndex + 1][0].rT -
+            measureSelectedNotes2[cursorIndex][0].rT) /
+            (GetTempo() / 100)
         )
       }
 
-      prevBeat = measureSelectedNotes2[index + 1][0].rT
+      prevBeat =
+        (measureSelectedNotes2[cursorIndex + 1][0].rT -
+          measureSelectedNotes2[cursorIndex][0].rT) /
+        (GetTempo() / 100)
     }
 
     // let cursorDuration =
@@ -364,7 +381,7 @@ export default function PlayerController ({ player, updateId, show_note }) {
   //custom play function
   return (
     <div>
-      <IonButton
+      <button
         id='playButton'
         className='playButton'
         component='span'
@@ -373,16 +390,24 @@ export default function PlayerController ({ player, updateId, show_note }) {
       >
         <div style={{ color: 'whiteSmoke' }}>
           {/* {playPauseIcon ? <PlayArrow /> : <Pause />} mIcon */}
+          {/* {playPauseIcon ? 'Play' : 'Pause'} */}
+          <div
+            className={playPauseIcon ? 'playIcon' : 'pauseIcon'}
+            style={{ color: 'white !important', fontSize: '145px' }}
+          ></div>
         </div>
-      </IonButton>
-      <IonButton
+      </button>
+      <button
         id='stopButton'
         className='stopButton'
         component='span'
         onClick={stop}
       >
-        {/* <SkipPrevious /> mIcon */}
-      </IonButton>
+        <div
+          className='stopIcon'
+          style={{ color: 'white !important', fontSize: '145px' }}
+        ></div>
+      </button>
 
       <div
         style={{

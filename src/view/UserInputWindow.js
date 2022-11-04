@@ -137,7 +137,7 @@ export default function UserInputWindowF () {
         {userInputText}
       </p>
 
-      <IonButton
+      <button
         // style={{position}}
         component='span'
         id='deleteButton'
@@ -147,9 +147,15 @@ export default function UserInputWindowF () {
         // onTouchCancel={deleteUserNotes}
         onTouchMove={deleteUserNotesAll}
       >
-        {countUserInput}
-        {/* {countUserInput > 0 ? <p>{countUserInput}</p> : <Backspace />} mIcon */}
-      </IonButton>
+        {countUserInput > 0 ? (
+          <p>{countUserInput}</p>
+        ) : (
+          <div
+            className='deleteIcon'
+            style={{ color: 'white', fontSize: '45px' }}
+          ></div>
+        )}
+      </button>
     </div>
   )
 }

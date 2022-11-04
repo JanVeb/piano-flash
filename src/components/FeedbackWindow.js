@@ -718,19 +718,45 @@ export default function FeedbackWindow ({
   return (
     <div>
       <div id='myNav3' className='feedbackWindow'>
-        <p
+        {/* <div
           style={{
             position: 'fixed',
-            left: '10px',
-            bottom: '30%'
-          }}
-          onClick={() => {
-            OpenInfoWindow()
+            left: '2px',
+            bottom: '30%',
+            width: '30px',
+            height: '30px',
+            backgroundColor: 'white',
+            fontSize: '20px',
+            borderRadius: '60%',
+            display: showInfoButton === 0 ? 'none' : 'block'
           }}
         >
-          mIcon
-          {/* {showInfoButton === 0 ? null : <Info />} */}
-        </p>
+          <p
+            style={{
+              position: 'relative',
+              top: '-20px',
+              left: '12px',
+              fontWeight: 'bold',
+              color: 'black'
+              // backgroundColor: 'white'
+            }}
+            onClick={() => {
+              OpenInfoWindow()
+            }}
+          >
+            i
+          </p>
+        </div> */}
+        <span
+          style={{
+            position: 'relative',
+            top: '10px',
+            left: '5px'
+          }}
+          className='dot'
+          // style={{ marginLeft: '15px' }}
+          onClick={() => OpenInfoWindow()}
+        ></span>
         {/* //hide info button, as its set to position: fixed, it shows on piano keyboard */}
         {toManyNotes === 1 ? (
           <p
@@ -761,16 +787,16 @@ export default function FeedbackWindow ({
         </div>
 
         {measureLine}
-        <IonButton
+        <button
           id='feedbackButton'
           className='feedbackButton'
           onClick={openNav3}
         >
           <div
             className='noteCheck2'
-            style={{ color: 'white', fontSize: '45px' }}
+            style={{ color: 'black', fontSize: '45px' }}
           ></div>
-        </IonButton>
+        </button>
       </div>
     </div>
   )

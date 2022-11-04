@@ -112,6 +112,8 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
       document.getElementById('backTrackVol').value / 100
     localStorage.setItem('settings', JSON.stringify(settings))
     BackTrackVol(document.getElementById('backTrackVol').value)
+    let volumeText = document.getElementById('volumeText')
+    volumeText.innerHTML = document.getElementById('backTrackVol').value
   }
 
   function GetBackTrackVol () {
@@ -120,6 +122,25 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
         ? {}
         : JSON.parse(localStorage.getItem('settings'))
     return settings['backTrackVol']
+  }
+
+  function SaveTempo () {
+    let settings =
+      JSON.parse(localStorage.getItem('settings')) === null
+        ? {}
+        : JSON.parse(localStorage.getItem('settings'))
+    settings['tempo'] = document.getElementById('tempo').value
+    localStorage.setItem('settings', JSON.stringify(settings))
+    let tempoText = document.getElementById('tempoText')
+    tempoText.innerHTML = document.getElementById('tempo').value
+  }
+
+  function GetTempo () {
+    let settings =
+      JSON.parse(localStorage.getItem('settings')) === null
+        ? {}
+        : JSON.parse(localStorage.getItem('settings'))
+    return settings['tempo']
   }
 
   return (
@@ -134,7 +155,7 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
           display: pullScoreListUP ? 'none' : 'block'
         }}
       >
-        <div>
+        <div style={{ float: 'left' }}>
           <Dropdown
             options={{
               value:
@@ -150,9 +171,10 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
         </div>
         <h3
           style={{
+            position: 'relative',
             fontSize: '12px',
-            color: 'rgb(186, 186, 186)'
-            // marginLeft: '20px',
+            color: 'rgb(186, 186, 186)',
+            left: '20px'
           }}
         >
           Number Of Measures To Study
@@ -160,20 +182,50 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
       </div>
       <div
         style={{
-          display: 'flex',
+          // display: 'flex',
           marginLeft: '20px',
           marginTop: '30px',
           display: pullScoreListUP ? 'none' : 'block'
         }}
       >
-        <p>BackTrack Volume</p>
+        <p style={{ float: 'left', left: '20px' }} id='volumeText'>
+          {GetBackTrackVol() * 100}
+        </p>
         <input
+          style={{ float: 'left' }}
           type='range'
           id='backTrackVol'
           onChange={SaveBTVolume}
           // value="20" //{GetBackTrackVol}
         />
+
+        <p style={{ left: '20px' }}>BackTrack Volume</p>
       </div>
+      <br></br>
+      <div
+        style={{
+          // display: 'flex',
+          marginLeft: '20px',
+          marginTop: '30px',
+          display: pullScoreListUP ? 'none' : 'block'
+        }}
+      >
+        <p style={{ float: 'left', left: '20px' }} id='tempoText'>
+          {GetTempo()}
+        </p>
+        <input
+          style={{ float: 'left' }}
+          type='range'
+          min='10'
+          max='400'
+          id='tempo'
+          onChange={SaveTempo}
+          // value="20" //{GetBackTrackVol}
+        />
+
+        <p style={{ left: '20px' }}>Tempo</p>
+      </div>
+      <br></br>
       <div
         style={{ display: 'flex', display: pullScoreListUP ? 'none' : 'block' }}
       >
@@ -294,27 +346,29 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
         ))}
       </ul>
 
-      <IonButton
+      <button
         component='span'
         className='contentButton'
         id='contentButton'
         onClick={openNav2}
       >
-        {/* <List /> */}
-      </IonButton>
+        <div
+          className='listIcon'
+          style={{ color: 'white', fontSize: '45px' }}
+        ></div>
+      </button>
 
-      <IonButton
+      <button
         component='span'
         id='pianoWindowButton'
         className='pianoWindowButton'
         onClick={window.PianoWindow}
       >
-        <link
-          rel='stylesheet'
-          href='https://fonts.googleapis.com/icon?family=Material+Icons'
-        ></link>
-        <i className='material-icons'>piano</i>
-      </IonButton>
+        <div
+          className='pianoIcon'
+          style={{ color: 'white', fontSize: '45px' }}
+        ></div>
+      </button>
     </div>
   )
 }

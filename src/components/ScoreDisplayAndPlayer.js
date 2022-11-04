@@ -50,69 +50,72 @@ function GetNotesUCur () {
   let cursorNotes = new Array()
   while (window.osmd.cursor.NotesUnderCursor().length > 0) {
     for (let i = 0; i < window.osmd.cursor.NotesUnderCursor().length; i++) {
-      // if (window.osmd.cursor.NotesUnderCursor()[i].isRestFlag === false) {
       let note = window.osmd.cursor.NotesUnderCursor()[i]
-      notesUnderCursor.push({
-        n: note.halfTone + 12, // see issue #224
-        // CORRECTION FOR ELISE REPEATS TO LONG AFTER JUMP
-        //For Elise measure 7-9 937 ms, 22-24 1312
-        // rT:
-        //   note.sourceMeasure.MeasureNumberXML >= 9 &&
-        //   note.sourceMeasure.MeasureNumberXML <= 23
-        //     ? window.osmd.PlaybackManager.timingSource.getDurationInMs(
-        //         iterator.currentTimeStamp
-        //       ) - 749
-        //     : note.sourceMeasure.MeasureNumberXML >= 24
-        //     ? window.osmd.PlaybackManager.timingSource.getDurationInMs(
-        //         iterator.currentTimeStamp
-        //       ) - 1873
-        //     : window.osmd.PlaybackManager.timingSource.getDurationInMs(
-        //         iterator.currentTimeStamp
-        //       ),
-        rT:
-          window.osmd.PlaybackManager.timingSource.getDurationInMs(
+      // if (note.isRestFlag === false) {
+      if (window.osmd.cursor.NotesUnderCursor()[i].isRestFlag === false) {
+        notesUnderCursor.push({
+          n: note.halfTone + 12, // see issue #224
+          // CORRECTION FOR ELISE REPEATS TO LONG AFTER JUMP
+          //For Elise measure 7-9 937 ms, 22-24 1312
+          // rT:
+          //   note.sourceMeasure.MeasureNumberXML >= 9 &&
+          //   note.sourceMeasure.MeasureNumberXML <= 23
+          //     ? window.osmd.PlaybackManager.timingSource.getDurationInMs(
+          //         iterator.currentTimeStamp
+          //       ) - 749
+          //     : note.sourceMeasure.MeasureNumberXML >= 24
+          //     ? window.osmd.PlaybackManager.timingSource.getDurationInMs(
+          //         iterator.currentTimeStamp
+          //       ) - 1873
+          //     : window.osmd.PlaybackManager.timingSource.getDurationInMs(
+          //         iterator.currentTimeStamp
+          //       ),
+          rT: window.osmd.PlaybackManager.timingSource.getDurationInMs(
             iterator.currentTimeStamp
-          ) - rTime,
-        l: note.length.realValue,
-        // v:
-        //   window.osmd.cursor.iterator.activeDynamicExpressions[
-        //     note.parentStaffEntry.parentStaff.id - 1
-        //   ].soundDynamic / (127).toFixed(2),
-        nM: note.sourceMeasure.MeasureNumberXML,
-        sI: note.parentStaffEntry.parentStaff.id,
-        iG: note.IsGraceNote,
-        cL: parseInt(
-          document
-            .getElementById('cursorImg-0')
-            .style.left.match(/[+-]?\d+(\.\d+)?/g)
-            .join(''),
-          10
-        ),
-        cT: parseInt(
-          document
-            .getElementById('cursorImg-0')
-            .style.top.match(/[+-]?\d+(\.\d+)?/g)
-            .join(''),
-          10
-        ),
-        // cT: parseInt(
-        //   document
-        //     .getElementById('cursorImg-0')
-        //     .style.top.match(/[+-]?\d+(\.\d+)?/g)
-        //     .join(''),
-        //   10
-        // ),
-        nPx: window.osmd.EngravingRules.GNote(
-          note
-        ).vfnote[0].note_heads[0].x.toFixed()
-      })
-      // }
-      rTime = window.osmd.PlaybackManager.timingSource.getDurationInMs(
-        iterator.currentTimeStamp
-      )
+          ),
+          l: note.length.realValue,
+          // v:
+          //   window.osmd.cursor.iterator.activeDynamicExpressions[
+          //     note.parentStaffEntry.parentStaff.id - 1
+          //   ].soundDynamic / (127).toFixed(2),
+          nM: note.sourceMeasure.MeasureNumberXML,
+          sI: note.parentStaffEntry.parentStaff.id,
+          iG: note.IsGraceNote,
+          cL: parseInt(
+            document
+              .getElementById('cursorImg-0')
+              .style.left.match(/[+-]?\d+(\.\d+)?/g)
+              .join(''),
+            10
+          ),
+          cT: parseInt(
+            document
+              .getElementById('cursorImg-0')
+              .style.top.match(/[+-]?\d+(\.\d+)?/g)
+              .join(''),
+            10
+          ),
+          // cT: parseInt(
+          //   document
+          //     .getElementById('cursorImg-0')
+          //     .style.top.match(/[+-]?\d+(\.\d+)?/g)
+          //     .join(''),
+          //   10
+          // ),
+          nPx: window.osmd.EngravingRules.GNote(
+            note
+          ).vfnote[0].note_heads[0].x.toFixed()
+        })
+        // }
+        rTime = window.osmd.PlaybackManager.timingSource.getDurationInMs(
+          iterator.currentTimeStamp
+        )
+      }
     }
-    notesCurArr.push(notesUnderCursor)
-    notesUnderCursor = []
+    if (notesUnderCursor.length > 0) {
+      notesCurArr.push(notesUnderCursor)
+      notesUnderCursor = []
+    }
     window.osmd.cursor.next()
   }
 

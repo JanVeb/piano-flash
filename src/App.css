@@ -497,164 +497,297 @@ overflow: scroll;
 /* settings buttons */
 
 .playButton {
-  height: 10vh;
+
   position: fixed;
   left: 2px;
-  top: 2vh;
+  top: 10px;
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-
+background-color:rgb(20, 35, 245);
   transition: 0.5s;
   width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
 
+.playIcon {
+  position: absolute;
+  top: -5px;
+  left: 3px;
+  width: 65px;
+  height: 65px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/icons/play-solid-white.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+}
+.pauseIcon {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/icons/pause-icon.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+}
+
+
 .stopButton {
-  height: 10vh;
+
   position: fixed;
   left: 2px;
-  top: 12.5vh;
+  top: 70px;
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-
+  background-color:rgb(20, 35, 245);
+  color: white;
   transition: 0.5s;
   width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
+.stopIcon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/icons/stop-icon.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
 }
 
 .feedbackButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: fixed;
   left: 2px;
-  top: 23vh;
+  top: 130px;
   transition: 0.5s;
+  background-color:rgb(20, 35, 245);
+  color: white;
   width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
 
 .noteCheck2 {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0);
-  color: white;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  color: black;
   background-image: url("/public/assets/icons/noteCheck3.svg");
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain; /* Resize the background image to cover the entire container */
 }
 
+
 .pianoWindowButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: fixed;
   left: 2px;
-  top: 33.5vh;
+  top: 190px;
   transition: 0.5s;
-  width: 54px;
   z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
+.pianoIcon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  background-image: url("/public/assets/icons/piano-keyboard.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
 }
 
 .settingsButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: absolute;
   right: 2px;
-  top: 2vh;
-
+  top: 10px;
   transition: 0.5s;
-  width: 54px;
   z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
-/* .settingsButton::after {
-  background-position: 5px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  height: 10vh;
+.settingsIcon {
   position: absolute;
-  right: 2px;
-  bottom: 2vh;
-
-  transition: 0.5s;
-  width: 54px;
-  z-index: 10;
-} */
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/icons/settings.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+}
 
 .contentButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: fixed;
   right: 2px;
-  top: 12.5vh;
+  top: 70px;
   transition: 0.5s;
-  width: 54px;
   z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
-
+.listIcon {
+  position: absolute;
+  top: 12px;
+  left: 9px;
+  width: 25px;
+  height: 25px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/icons/list.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
+}
 
 
 #translateNotesButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: fixed;
   right: 2px;
-  top: 23vh;
-
+  top: 130px;
   transition: 0.5s;
-  width: 54px;
   /* display: none;*/
   visibility: visible;
   z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
 
 .noteLeter {
   position: absolute;
-  width: 25px;
-  height: 25px;
+  top: 8px;
+  left: 8px;
+  width: 30px;
+  height: 30px;
   background-color: rgba(255, 255, 255, 0);
   color: white;
   background-image: url("/public/assets/icons/noteLeter2.svg");
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain; /* Resize the background image to cover the entire container */
+  font-weight: bold;
 }
+
 
 .infoTranslateNoteButton {
   background-position: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
-  height: 10vh;
   position: fixed;
   right: 2px;
-  top: 23vh;
-
+  top: 130px;
   transition: 0.5s;
-  width: 54px;
   /* display: none;*/
   visibility: visible;
   z-index: 9;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
 }
 
 .deleteButton {
-
   /* background-position: 5px; */
   /* background-repeat: no-repeat; */
   /* cursor: pointer; */
-  height: 10vh;
   position: fixed;
   right: 2px;
-  top: 33.5vh;
+  top: 190px;
   transition: 0.5s;
-  width: 54px;
   z-index: 100 !important;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
+.deleteIcon {
+  position: absolute;
+  top: 13px;
+  left: 7px;
+  width: 30px;
+  height: 30px;
+  background-image: url("/public/assets/icons/delete.svg");
+  background-repeat: no-repeat; 
+  background-size: contain;
+}
+
+.sixteenth {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 200px;
+  /* background-color: rgba(255, 255, 255, 0); */
+  /* color: white; */
+  background-image: url("/public/assets/notesGraphic/sixteenth.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
 }
 
 .toggle4 {
@@ -673,8 +806,25 @@ overflow: scroll;
   position: fixed;
   left: 0;
   top: 55vh;
-  width: 50px;
-  height: 35px;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+.compareArrows {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+  width: 25px;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  background-image: url("/public/assets/icons/compare-arrows.svg");
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: contain; /* Resize the background image to cover the entire container */
 }
 
 .menuButton {
@@ -762,9 +912,12 @@ overflow: scroll;
 }
 
 .dot:after {
+  position: relative;
+  top: -2px;
   content: "i";
   font-size: 18px;
   color: black;
+  font-weight: bold;
 }
 
 .musicSheetSplash {

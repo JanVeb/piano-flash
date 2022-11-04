@@ -387,15 +387,18 @@ export default function SettingsMenu ({
         ) : null}
       </div> */}
 
-      <IonButton
+      <button
         style={{ bottom: buttonsFlashPerf === false ? '15px' : 'null' }}
         component='span'
         id='settingsButton'
         className='settingsButton'
         onClick={SettingsButton}
       >
-        {/* <Settings /> mIcon */}
-      </IonButton>
+        <div
+          className='settingsIcon'
+          style={{ color: 'white', fontSize: '45px' }}
+        ></div>
+      </button>
 
       <div id='myNav' className='contentSettingsWindow'>
         <i class='fa-brands fa-discord'></i>
