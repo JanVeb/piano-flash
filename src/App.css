@@ -158,6 +158,8 @@ overflow: scroll;
   left: 110;
   margin-left: 60px;
   margin-right: 60px;
+  /* margin-top: 60px;
+  margin-bottom: 60px; */
   font-size: 14px;
   /* width: 100vh !important; */
 }
@@ -175,69 +177,6 @@ overflow: scroll;
 .listItem:hover {
   background-color: rgba(38, 255, 0, 0.233);
 }
-
-/* .btn {
-  position: fixed;
-  left: 10;
-  width: 10vh;
-  height: 30px;
-  padding: 5px;
-  margin: 10px;
-} */
-
-/* .MuiIconButton-root {
-  background-color: rgba(255, 255, 255, 1) !important;
-} */
-
-/* .controller-bar {
-  position: fixed;
-  left: 0;
-  top: 10px;
-  width: 0%;
-  padding: 0px;
-  margin: 0px;
-  text-align: center;
-  display: block;
-  height: 10px;
-} */
-
-/* .scoreInfo {
-  margin: 0px;
-  padding: 0px;
-  font-size: calc(10px);
-} */
-
-/* .swal-overlay.swal-overlay--show-modal {
-  overflow-y: scroll;
-  height: 100vh;
-  position: bottom !important;
-} */
-
-/* .swal-modal {
-  width: 100vh;
-  overflow-y: auto;
-  position: bottom !important;
-} */
-
-/* .swal-text {
-  display: inline-block;
-  display: block;
-  overflow-y: auto;
-  font-size: calc(14px);
-  width: 100vh;
-  position: bottom !important;
-}
-
-.swal-title {
-  font-size: calc(16px);
-}
-
-.ion-button {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  zoom: 80%;
-} */
 
 .swal-modal {
   background-color: rgb(255, 255, 255);
@@ -399,7 +338,7 @@ overflow: scroll;
 
   color: #fffefe;
   /** it was left: 0, now it opens from right **/
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0);
   /* overflow-x: hidden; */
   transition: 0.2s;
   z-index: 1 !important;
@@ -619,6 +558,42 @@ background-color:rgb(20, 35, 245);
   border-style: outset
 }
 
+.hideLiveFeedbackButton {
+  background-position: 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: fixed;
+  left: 2px;
+  top: 310px;
+  transition: 0.5s;
+  z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
+.clearLiveFeedback {
+  background-position: 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: fixed;
+  left: 2px;
+  top: 370px;
+  transition: 0.5s;
+  z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
 .pianoIcon {
   position: absolute;
   top: 10px;
@@ -778,16 +753,12 @@ background-color:rgb(20, 35, 245);
 }
 
 .sixteenth {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 200px;
-  height: 200px;
-  /* background-color: rgba(255, 255, 255, 0); */
-  /* color: white; */
+  width: 10px;
+  height: 10px;
   background-image: url("/public/assets/notesGraphic/sixteenth.svg");
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: contain; /* Resize the background image to cover the entire container */
+  background-repeat: no-repeat;
+  background-size:contain;
+  z-index: 100 !important;
 }
 
 .toggle4 {
@@ -805,7 +776,7 @@ background-color:rgb(20, 35, 245);
   cursor: pointer;
   position: fixed;
   left: 0;
-  top: 55vh;
+  top: 250px;
   background-color:rgb(20, 35, 245);
   color: white;
   width: 54px;

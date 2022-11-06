@@ -29,8 +29,9 @@ let index = -1
 let stopPlay = false
 let cursorIndex = 0
 
-export default function PlayerController ({ player, updateId, show_note }) {
+export default function PlayerController ({ player, setCurentCursorNotes }) {
   const [playPauseIcon, setPlayPauseIcon] = useState(true)
+
   let correctVolume = 0.8
   let prevBeat
 
@@ -128,10 +129,15 @@ export default function PlayerController ({ player, updateId, show_note }) {
     // player.playbackManager.pause();
     // player.playbackManager.reset();
 
-    document.getElementById('cursorOnSVGScore').style.left =
-      window.cursorNotes[0][0].cL * OsmdSize() + 'px'
     document.getElementById('cursorOnSVGScore').style.top =
-      window.cursorNotes[0][0].cT * OsmdSize() - 20 + 'px'
+      window.cursorNotes[0][0].cT + 20 + 'px'
+    document.getElementById('cursorOnSVGScore').style.left =
+      window.cursorNotes[0][0].cL + 'px'
+    document.getElementById('cursorOnSVGScore').style.height =
+      window.cursorNotes[0][0].cH + 120 + 'px'
+    document
+      .getElementById('cursorOnSVGScore')
+      .scrollIntoView({ behavior: 'auto', block: 'start' })
 
     window.OnStopResetTranslate()
     setPlayPauseIcon(true)
@@ -187,8 +193,12 @@ export default function PlayerController ({ player, updateId, show_note }) {
       (GetTempo() / 100)
     cursorLeft = measureSelectedNotes2[cursorIndex][0].cL
     document.getElementById('cursorOnSVGScore').style.top =
-      measureSelectedNotes2[cursorIndex][0].cT * OsmdSize() - 20 + 'px'
-    FluidCursorStart()
+      measureSelectedNotes2[cursorIndex][0].cT * OsmdSize() + 20 + 'px'
+
+    document
+      .getElementById('cursorOnSVGScore')
+      .scrollIntoView({ behavior: 'auto', block: 'start' })
+    FluidCursorStart(measureSelectedNotes2)
     setTimeout(() => MoveCursors(), measureSelectedNotes2[cursorIndex][0].rT)
   }
 
@@ -198,16 +208,16 @@ export default function PlayerController ({ player, updateId, show_note }) {
   }
   window.startCursor = startCursor
 
-  function FluidCursorStart () {
+  function FluidCursorStart (measureSelectedNotes2) {
     for (let i = 0; i <= 29; i++) {
       setTimeout(function () {
-        FluidCursorMove(i)
+        FluidCursorMove(i, measureSelectedNotes2)
       }, i * fluidDuration)
     }
     cursorIndex++
   }
 
-  function FluidCursorMove (fluidIndex) {
+  function FluidCursorMove (fluidIndex, measureSelectedNotes2) {
     // document.getElementById('osmdCanvasPage1').scrollLeft =
     //   cursorLeft * OsmdSize() +
     //   (fluidIndex * cursorPositionsDistance) / 30 -
@@ -217,14 +227,12 @@ export default function PlayerController ({ player, updateId, show_note }) {
         cursorLeft * OsmdSize() +
         (fluidIndex * cursorPositionsDistance) / 30 +
         'px'
+      document.getElementById('cursorOnSVGScore').style.height =
+        measureSelectedNotes2[cursorIndex][0].cH + 120 + 'px'
     } else {
       document.getElementById('cursorOnSVGScore').style.left =
         cursorLeft * OsmdSize() + (fluidIndex * 30) / 30 + 'px'
     }
-
-    document
-      .getElementById('cursorOnSVGScore')
-      .scrollIntoView({ behavior: 'auto', block: 'center' })
   }
 
   function OsmdSize () {
@@ -344,7 +352,7 @@ export default function PlayerController ({ player, updateId, show_note }) {
     if (stopPlay === true) {
       return
     }
-
+    setCurentCursorNotes(measureSelectedNotes2[cursorIndex])
     MoveCursors(measureSelectedNotes2)
 
     CheckForGrace(measureSelectedNotes2)

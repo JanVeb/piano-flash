@@ -24,7 +24,7 @@ import FeedbackWindow from '../components/FeedbackWindow'
 import TranslateNotes from '../view/LettersSheet'
 import UserInputWindowF from '../view/UserInputWindow'
 import AboutPage from './About'
-import LiveFeedback from '../view/LiveFeedback'
+import WebMidiCont from '../components/webmidi/MidiComponent'
 
 // import MidiController from '../components/webmidi/WebMidi'
 // import { WebMidi } from 'webmidi';
@@ -139,7 +139,7 @@ export default function Main ({ darkMode, setDarkMode }) {
     followCursor: true,
     disableCursor: false,
     measureNumberInterval: 1,
-    drawingParameters: 'compacttight',
+    // drawingParameters: 'compacttight',
     drawMetronomeMarks: true,
     drawMeasureNumbers: true,
     defaultColorRest: 'white',
@@ -172,9 +172,9 @@ export default function Main ({ darkMode, setDarkMode }) {
         'visible'
       document.getElementById('pianoWindow').style.height = '22vh'
       document.getElementById('scrollText').style.height = '28vh'
-      setScoreHeight('74vh')
+      // setScoreHeight('74vh')
 
-      document.getElementById('drawSVGScore').style.height = '74vh'
+      // document.getElementById('score').style.height = '74vh'
       document.getElementById('translateNotesWindow').style.height = '74vh'
     } else {
       if (document.getElementById('pianoWindow').style.height === '22vh') {
@@ -183,8 +183,8 @@ export default function Main ({ darkMode, setDarkMode }) {
         document.getElementById('pianoWindow').style.height =
           '0' /** from 100% to 25% **/
         document.getElementById('scrollText').style.height = '0'
-        setScoreHeight('100vh')
-        document.getElementById('drawSVGScore').style.height = '100vh'
+        // setScoreHeight('100vh')
+        // document.getElementById('score').style.height = '100vh'
         document.getElementById('translateNotesWindow').style.height = '100vh'
         // }
       } else {
@@ -193,8 +193,8 @@ export default function Main ({ darkMode, setDarkMode }) {
         document.getElementById('pianoWindow').style.height =
           '44vh' /** from 100% to 25% **/
         document.getElementById('scrollText').style.height = '50vh'
-        setScoreHeight('50vh')
-        document.getElementById('drawSVGScore').style.height = '50vh'
+        // setScoreHeight('50vh')
+        // document.getElementById('score').style.height = '50vh'
         document.getElementById('translateNotesWindow').style.height = '50vh'
         // }
       }
@@ -279,11 +279,24 @@ export default function Main ({ darkMode, setDarkMode }) {
     }
   }
   const [buttonsFlashPerf, setButtonsFlashPerf] = useState(0)
+
+  function LiveFeedbackHideShow () {
+    if (document.getElementById('liveFeedbackNotes').style.display === 'none') {
+      document.getElementById('liveFeedbackNotes').style.display = 'block'
+    } else {
+      document.getElementById('liveFeedbackNotes').style.display = 'none'
+    }
+  }
+  const [liveFeedback, setLiveFeedback] = useState([])
+  function ClearLiveFeedback () {
+    setLiveFeedback([])
+  }
+
   return (
     <div>
       {/* <DrawSVGScore /> */}
       {/* <LogueSf2 /> */}
-      <LiveFeedback />
+
       <div id='infoTranslateNoteWindow' className='infoTranslateNoteWindow'>
         <p
           style={{
@@ -325,6 +338,30 @@ export default function Main ({ darkMode, setDarkMode }) {
         >
           Close
         </button>
+        <button
+          component='span'
+          className='hideLiveFeedbackButton'
+          id='LiveFeedbackHideShow'
+          onClick={LiveFeedbackHideShow}
+        >
+          HLF
+          {/* <div
+            className='listIcon'
+            style={{ color: 'white', fontSize: '45px' }}
+          ></div> */}
+        </button>
+        <button
+          component='span'
+          className='clearLiveFeedback'
+          id='clearLiveFeedback'
+          onClick={ClearLiveFeedback}
+        >
+          CLF
+          {/* <div
+            className='listIcon'
+            style={{ color: 'white', fontSize: '45px' }}
+          ></div> */}
+        </button>
       </div>
       <AboutPage />
       <UserInputWindowF />
@@ -363,6 +400,8 @@ export default function Main ({ darkMode, setDarkMode }) {
           setMeasureEnd={setMeasureEnd}
           measureStart={measureStart}
           measureEnd={measureEnd}
+          liveFeedback={liveFeedback}
+          setLiveFeedback={setLiveFeedback}
         />
         {/* </div> */}
       </div>

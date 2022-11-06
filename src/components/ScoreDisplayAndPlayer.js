@@ -10,6 +10,7 @@ import {
 import { AllDecksDict, AllDecksNoRepeatDict } from '../data/all_score_files'
 import PlayerController from '../components/PlayerController'
 import LetterSheetDetail from '../view/LetterSheetDetail'
+import LiveFeedback from '../view/LiveFeedback'
 
 const getPlaybackControl = osmd => {
   var timingSource = new LinearTimingSource()
@@ -53,6 +54,21 @@ function GetNotesUCur () {
       let note = window.osmd.cursor.NotesUnderCursor()[i]
       // if (note.isRestFlag === false) {
       if (window.osmd.cursor.NotesUnderCursor()[i].isRestFlag === false) {
+        let cursorTop = parseInt(
+          document
+            .getElementById('cursorImg-0')
+            .style.top.match(/[+-]?\d+(\.\d+)?/g)
+            .join(''),
+          10
+        )
+        let cursorHeight = parseInt(
+          document
+            .getElementById('cursorImg-0')
+            .style.height.match(/[+-]?\d+(\.\d+)?/g)
+            .join(''),
+          10
+        )
+
         notesUnderCursor.push({
           n: note.halfTone + 12, // see issue #224
           // CORRECTION FOR ELISE REPEATS TO LONG AFTER JUMP
@@ -95,6 +111,14 @@ function GetNotesUCur () {
               .join(''),
             10
           ),
+          cB: cursorTop + cursorHeight,
+          cH: parseInt(
+            document
+              .getElementById('cursorImg-0')
+              .style.height.match(/[+-]?\d+(\.\d+)?/g)
+              .join(''),
+            10
+          ),
           // cT: parseInt(
           //   document
           //     .getElementById('cursorImg-0')
@@ -102,9 +126,12 @@ function GetNotesUCur () {
           //     .join(''),
           //   10
           // ),
-          nPx: window.osmd.EngravingRules.GNote(
+          nPVer: window.osmd.EngravingRules.GNote(
             note
-          ).vfnote[0].note_heads[0].x.toFixed()
+          ).vfnote[0].note_heads[0].x.toFixed(),
+          nPHor: window.osmd.EngravingRules.GNote(
+            note
+          ).vfnote[0].note_heads[0].y.toFixed()
         })
         // }
         rTime = window.osmd.PlaybackManager.timingSource.getDurationInMs(
@@ -122,10 +149,6 @@ function GetNotesUCur () {
   // return
   cursorNotes = notesCurArr
   window.cursorNotes = cursorNotes
-  console.log(
-    '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 414 ~ GetNotesUCur ~ window.cursorNotes',
-    window.cursorNotes
-  )
   window.ResetOSMDCursor()
   window.osmd.cursor.hide()
 }
@@ -184,10 +207,6 @@ const register_note_from_osmd = osmd => {
           // const gNote = gNotes[j];
           // make sure our note is not silent
           if (note != null) {
-            // console.log(
-            //   '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 75 ~ note',
-            //   note
-            // );
             allNotesWRest.push({
               note: note.halfTone + 12, // see issue #224
               time: iterator.currentTimeStamp.RealValue * 2,
@@ -285,7 +304,6 @@ function CursorData () {
   return cursorData
 }
 window.CursorData = CursorData
-// console.log(cursorData);
 
 export default function ScoreDisplayAndPlayer ({
   OSMDoptions,
@@ -293,7 +311,9 @@ export default function ScoreDisplayAndPlayer ({
   measureStart,
   measureEnd,
   setMeasureStart,
-  setMeasureEnd
+  setMeasureEnd,
+  liveFeedback,
+  setLiveFeedback
 }) {
   //----------------------------------Fluid Cursor
   // backup from player
@@ -346,6 +366,7 @@ export default function ScoreDisplayAndPlayer ({
   // };
   //-------------------------------------Fluid Cursor
   const [osmdSizeTrans, setOsmdSizeTrans] = useState(1)
+  const [osmdScreen, setOsmdScreen] = useState(1)
   let uniqueKey = 0
   function UniqueKey () {
     uniqueKey++
@@ -358,41 +379,44 @@ export default function ScoreDisplayAndPlayer ({
       id='cursorOnSVGScore'
       style={{
         position: 'absolute',
-        top: '50px', //cursorData.default.cT * OsmdSize() - 20,
+        top: '56px', //cursorData.default.cT * OsmdSize() - 20,
 
-        left: '88px', //cursorData.default.cL * OsmdSize(),
+        left: '82px', //cursorData.default.cL * OsmdSize(),
         width: '3px', //cursorData.default.cW,
-        height: '180px', //cursorData.default.cH + 40,
+        height: '263px', //cursorData.default.cH + 40,
         display: 'block',
         backgroundColor: 'rgba(34, 255, 1, 0.1)',
         boxShadow: 'inset 0 0 7px #0f0',
         zIndex: -1,
         border:
           getDarkMode() === 'On' ? '0.1px solid white' : '0.1px solid black',
-        margin: '0px',
+        // marginTop: '-100px',
         transformOrigin: '0% 0% 0px',
         transform: osmdSizeTrans
       }}
     ></p>
   ]
 
+  function InitialiseCursor () {
+    document.getElementById('cursorOnSVGScore').style.top =
+      window.cursorNotes[0][0].cT + 20 + 'px'
+    document.getElementById('cursorOnSVGScore').style.left =
+      window.cursorNotes[0][0].cL + 'px'
+    document.getElementById('cursorOnSVGScore').style.height =
+      window.cursorNotes[0][0].cH + 120 + 'px'
+    console.log(
+      "🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 404 ~ InitialiseCursor ~ document.getElementById('cursorOnSVGScore').style.left",
+      document.getElementById('cursorOnSVGScore').style.left
+    )
+  }
+
+  // InitialiseCursor()
   //testing counting non rest notes
-  // console.log(
-  //   '🚀 ~ file: PianoController.js ~ line 221 ~ PianoController ~ GetNotesUCur',
-  //   GetNotesUCur()
-  // );
 
   // let measureSelectedNotes2;
   // setTimeout(() => (measureSelectedNotes2 = GetNotesUCur()), 1000);
-  // console.log(
-  //   '🚀 ~ file: PianoController.js ~ line 232 ~ PianoController ~ measureSelectedNotes2',
-  //   measureSelectedNotes2
-  // );
 
   function MyNamespace () {
-    console.log(
-      '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 503 ~ MyNamespace ~ MyNamespace issue is from this function, being unable to execute properly'
-    )
     //   MoveCursors();
     //   // FluidCursorStart();
     //   // if (element.style.display === 'block') {
@@ -402,10 +426,6 @@ export default function ScoreDisplayAndPlayer ({
     //   //     imageOffset + 'px';
     //   // }
     //   cursorIndex++;
-    //   console.log(
-    //     '🚀 ~ file: PianoController.js ~ line 171 ~ MyNamespace ~ cursorIndex',
-    //     cursorIndex
-    //   );
     // test acesing gNotes
     // for (let i = 0; i < window.osmd.cursor.GNotesUnderCursor().length; i++) {
     //   let currentId =
@@ -420,7 +440,6 @@ export default function ScoreDisplayAndPlayer ({
   //-------------------------------------Fluid Cursor
   //----------------------------------Fluid Cursor
 
-  // console.log("ScoreDisplayAndPlayer: " + ScoreMetaData.deck_name);
   let settings = JSON.parse(localStorage.getItem('settings'))
   // const [scoreId, setScoreId] = useState(ScoreMetaData['id']);
   const [deckName, setDeckName] = useState(ScoreMetaData['deck_name'])
@@ -503,7 +522,7 @@ export default function ScoreDisplayAndPlayer ({
     for (let i = 0; i < AllDecksNoRepeat.length; i++) {
       AllDecksDict[AllDecksNoRepeat[i].deck_name] = AllDecksNoRepeat[i].entries[0].filename;
     }
-    console.log(AllDecksDict);*/
+*/
 
     var my_osmd = undefined
     if (osmd_init_done == false) {
@@ -517,6 +536,10 @@ export default function ScoreDisplayAndPlayer ({
     }
     //"/assets/playthatsheet-Laboheme.musicxml"
     my_osmd.EngravingRules.VoiceSpacingMultiplierVexflow = 1
+    my_osmd.EngravingRules.ChordSymbolYOffset = -14
+    my_osmd.EngravingRules.MinimumDistanceBetweenSystems = 16
+    my_osmd.EngravingRules.FingeringPositionFromXML = false
+    my_osmd.EngravingRules.FingeringPosition = 'below'
     my_osmd.EngravingRules.SetWantedStemDirectionByXml = false
     my_osmd.EngravingRules.UseJustifiedBuilder = false
 
@@ -551,7 +574,8 @@ export default function ScoreDisplayAndPlayer ({
         my_player.initialize()
         setPlayer(my_player)
         setTimeout(() => InitialiseFurther(), 500)
-        setTimeout(() => register_note_from_osmd(my_osmd), 10)
+        // setTimeout(() => register_note_from_osmd(my_osmd), 10)
+        setTimeout(() => InitialiseCursor(), 2000)
       })
       .catch(e => {
         console.log('OSMD loading ERROR occured...', e)
@@ -572,10 +596,7 @@ export default function ScoreDisplayAndPlayer ({
       // setTimeout(() => AddPaddingToCurrsor(), 1000);
       // setTimeout(() => FilterNotesPositionCursor(), 1000);
       setTimeout(() => GetNotesUCur(), 100)
-      console.log(
-        '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 567 ~ GetNotesUCur ~ window.cursorNotes',
-        window.cursorNotes
-      )
+
       // window.osmd.PlaybackManager.sf2Player = window.sf2;
       // getOsmdScaleAuto();
       window.StartExercise()
@@ -669,6 +690,9 @@ export default function ScoreDisplayAndPlayer ({
     setTimeout(() => {
       setOsmdSizeTrans('scale(' + settings['osmdSize'] + ')')
     }, 10)
+    let osmdScreen = 100 / parseFloat(settings['osmdSize'])
+
+    setOsmdScreen(osmdScreen)
   }
   window.getOSMDSizeScale = getOSMDSizeScaleUser
 
@@ -741,23 +765,16 @@ export default function ScoreDisplayAndPlayer ({
         : JSON.parse(localStorage.getItem('settings'))
 
     let measureEnd = parseInt(settings['measureEnd'])
-    console.log(
-      '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 393 ~ OsmdOverlays ~ measureEnd',
-      measureEnd
-    )
+
     let numberOfM = parseInt(settings['numberOfMeasures'])
-    console.log(
-      '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 395 ~ OsmdOverlays ~ numberOfM',
-      numberOfM
-    )
+
     if (measureEnd < numberOfM) {
       setRearOSMDOverlay((scaleRear + 45) * osmdScale)
-      console.log('rearOSMDOverlay ' + rearOSMDOverlay)
+
       CalcualteActiveCursorPos('firstNote') // return cursor to first note
       let scaleScoreWidth = document.getElementById('osmdSvgPage1').width
         .animVal.valueInSpecifiedUnits
       setScoreWidth(scaleScoreWidth * osmdScale)
-      console.log('scoreWidth ' + scoreWidth)
     } else {
       document.getElementsByClassName('score3')[0].style.display = 'none'
     }
@@ -766,7 +783,7 @@ export default function ScoreDisplayAndPlayer ({
   window.OsmdOverlays = OsmdOverlays
 
   // function CalcualteActiveCursorPos(int, position) {
-  //   console.log('test ' + window.measureSelectedNotes);
+
   //   let fisrtMeasureNumber =
   //     window.osmd.Sheet.sourceMeasures[0].MeasureNumberXML;
   //   let settings = JSON.parse(localStorage.getItem('settings'));
@@ -782,7 +799,6 @@ export default function ScoreDisplayAndPlayer ({
     let lastNote = window.measureSelectedNotes[
       window.measureSelectedNotes.length - 1
     ].noteObject.getAbsoluteTimestamp()
-    console.log('test  + window.measureSelectedNotes')
     // let fisrtMeasureNumber =
     //   window.osmd.Sheet.sourceMeasures[0].MeasureNumberXML;
     // let settings = JSON.parse(localStorage.getItem('settings'));
@@ -802,23 +818,28 @@ export default function ScoreDisplayAndPlayer ({
     return settings['darkMode']
   }
   let sheetWidth = window.screen.width - 130
-  console.log(
-    '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 829 ~ sheetWidth',
-    sheetWidth
-  )
-  //"Can't use Java 18.0.1.1 and Gradle 7.0 to import Gradle project android"
-  return (
-    <div
-      className='score'
-      id='score'
-      style={{
-        position: 'absolute',
-        height: 'inherit',
 
-        width: '100%'
-      }} //need to check width issue, if width is less than 5000 score will not render
-    >
-      {/* <div
+  //"Can't use Java 18.0.1.1 and Gradle 7.0 to import Gradle project android"
+
+  // let sixteenth = (
+  //   <div style={{ fill: 'yellow !important' }} className='sixteenth'></div>
+  // )
+
+  const [curentCursorNotes, setCurentCursorNotes] = useState([])
+
+  return (
+    <div>
+      <div
+        className='score'
+        id='score'
+        style={{
+          position: 'absolute',
+          height: 'inherit',
+
+          width: '100%' //'100%'
+        }} //need to check width issue, if width is less than 5000 score will not render
+      >
+        {/* <div
       // style={{
       //   transformOrigin: '0% 0% 0px',
 
@@ -828,63 +849,86 @@ export default function ScoreDisplayAndPlayer ({
       >
         <LetterSheetDetail />
       </div> */}
+        {/* <div style={{ position: 'absolute', fill: 'red !important', zIndex: 10 }}>
+        {sixteenth}
+      </div> */}
+        <div
+          className='score2'
+          id='score'
+          style={{
+            position: 'absolute',
+            top: '0px',
+            left: '0px',
+            width: frontOSMDOverlay,
+            zIndex: 9,
+            borderTop:
+              getDarkMode() === 'On'
+                ? overlayHeight + 'px rgb(30, 30, 30) solid'
+                : '100vh rgb(244, 244, 244) solid',
+            borderTop:
+              getDarkMode() === 'On'
+                ? overlayHeight + 'px rgb(30, 30, 30, .7) solid'
+                : '100vh rgb(244, 244, 244, .7) solid'
+          }}
+        ></div>
 
+        <div
+          className='score3'
+          id='score'
+          style={{
+            position: 'absolute',
+            top: '0px',
+            left: rearOSMDOverlay,
+            width: scoreWidth + 'px',
+            zIndex: 9,
+            borderTop:
+              getDarkMode() === 'On'
+                ? overlayHeight + 'px rgb(30, 30, 30) solid'
+                : '100vh rgb(244, 244, 244) solid',
+            borderTop:
+              getDarkMode() === 'On'
+                ? overlayHeight + 'px rgb(30, 30, 30, .7) solid'
+                : '100vh rgb(244, 244, 244, .7) solid'
+          }}
+        ></div>
+
+        {loaded && (
+          <PlayerController
+            setCurentCursorNotes={setCurentCursorNotes}
+            player={player}
+          />
+        )}
+
+        <div
+          // className="frontOSMDOverlay"
+          style={{
+            marginBottom: '100px',
+            marginTop: '100px',
+            // width: osmdScreen + '%',
+            transformOrigin: '0% 0% 0px',
+            transform: osmdSizeTrans,
+            // marginRight: screenWidth,
+            zIndex: -1
+          }}
+          ref={refContainer}
+        />
+        {cursorOnSVGScore}
+      </div>
       <div
-        className='score2'
-        id='score'
         style={{
-          position: 'absolute',
-          top: '0px',
-          left: '0px',
-          width: frontOSMDOverlay,
-          zIndex: 9,
-          borderTop:
-            getDarkMode() === 'On'
-              ? overlayHeight + 'px rgb(30, 30, 30) solid'
-              : '100vh rgb(244, 244, 244) solid',
-          borderTop:
-            getDarkMode() === 'On'
-              ? overlayHeight + 'px rgb(30, 30, 30, .7) solid'
-              : '100vh rgb(244, 244, 244, .7) solid'
-        }}
-      ></div>
-
-      <div
-        className='score3'
-        id='score'
-        style={{
-          position: 'absolute',
-          top: '0px',
-          left: rearOSMDOverlay,
-          width: scoreWidth + 'px',
-          zIndex: 9,
-          borderTop:
-            getDarkMode() === 'On'
-              ? overlayHeight + 'px rgb(30, 30, 30) solid'
-              : '100vh rgb(244, 244, 244) solid',
-          borderTop:
-            getDarkMode() === 'On'
-              ? overlayHeight + 'px rgb(30, 30, 30, .7) solid'
-              : '100vh rgb(244, 244, 244, .7) solid'
-        }}
-      ></div>
-
-      {loaded && <PlayerController player={player} />}
-
-      <div
-        // className="frontOSMDOverlay"
-        style={{
+          // width: '100%',
           transformOrigin: '0% 0% 0px',
-          width: '100%', //sheetWidth,
-          // left: '65px',
-          // right: '65px',
-          transform: osmdSizeTrans,
+          transform: osmdSizeTrans
           // marginRight: screenWidth,
-          zIndex: -1
+          // zIndex: 10
         }}
-        ref={refContainer}
-      />
-      {cursorOnSVGScore}
+      >
+        <LiveFeedback
+          curentCursorNotes={curentCursorNotes}
+          liveFeedback={liveFeedback}
+          setLiveFeedback={setLiveFeedback}
+        />
+      </div>
     </div>
   )
 }

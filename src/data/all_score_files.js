@@ -1,6 +1,6 @@
 export const AllDecksDict = {
   yellow: '/assets/scores/yellow_intwholesongbhutf8.xml',
-  'Single Notes': '/assets/fur_elise_short/Fur_Elise_1-2M.mxl',
+  'Single Notes': '/assets/scores/SingleNotesTest.xml',
   'Albéniz Cataluna (Curranda), No.2 from Suite Espanola':
     '/assets/scores/Cataluna (Curranda), No.2 from Suite Espanola.mxl',
   'Albéniz Espana Op. 165 No.1': '/assets/scores/Espana Op. 165 No.1.mxl',
@@ -71,7 +71,7 @@ export const AllDecksDict = {
   'Rothchild Piano Sonata Rmw13 2mov':
     '/assets/scores/Rothchild Piano Sonata Rmw13 2mov.mxl',
   'Rothchild Piano Sonata Rmw13 3mov':
-    '/assets/scores/Rothchild Piano Sonata Rmw13 3mov.mxl',
+    '/assets/scores/Rothchild Piano Sonata Rmw13 3mov.mxl'
 
   // "Mozart Sonatina n3 3mov": "/assets/scores/Sonatina n3 3mov.mxl",
 
@@ -80,11 +80,11 @@ export const AllDecksDict = {
   // "test2": "file:///Fur_Elise_1-2M.xml",
   // "test3": "Fur_Elise_1-2M.xml",
   // "test4": "files/Fur_Elise_1-2M.xml",
-};
+}
 
 export const AllDecksNoRepeatDict = {
   yellow: '/assets/scores/yellow_intwholesongbhutf8.xml',
-  'Single Notes': '/assets/fur_elise_short/Fur_Elise_1-2M.mxl',
+  'Single Notes': '/assets/scores/SingleNotesTest.xml',
   'Albéniz Cataluna (Curranda), No.2 from Suite Espanola':
     '/assets/scores/Cataluna (Curranda), No.2 from Suite Espanola.mxl',
   'Albéniz Espana Op. 165 No.1': '/assets/scores/Espana Op. 165 No.1.mxl',
@@ -156,11 +156,11 @@ export const AllDecksNoRepeatDict = {
   'Rothchild Piano Sonata Rmw13 2mov':
     '/assets/scores/Rothchild Piano Sonata Rmw13 2mov.mxl',
   'Rothchild Piano Sonata Rmw13 3mov':
-    '/assets/scores/Rothchild Piano Sonata Rmw13 3mov.mxl',
+    '/assets/scores/Rothchild Piano Sonata Rmw13 3mov.mxl'
 
   // "test": "file:///storage/emulated/0/Android/data/org.example.pianotrainer/files/Fur_Elise_1-2M.xml",
   // "test1": "file:///files/Fur_Elise_1-2M.xml",
   // "test2": "file:///Fur_Elise_1-2M.xml",
   // "test3": "Fur_Elise_1-2M.xml",
   // "test4": "files/Fur_Elise_1-2M.xml",
-};
+}

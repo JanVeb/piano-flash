@@ -135,6 +135,7 @@ export default function PianoController (props) {
     }
     var now = Date.now()
     const newEvents = midiNumbers.map(midiNumber => {
+      window.LiveFeedbackNotes(midiNumber)
       return {
         midiNumber,
         time: keyDownTimestamp,
@@ -147,7 +148,7 @@ export default function PianoController (props) {
     }
     window.CountUserInp()
     // if (settings['mesaureDistance'] === '1000') {
-    WholeScoreMoveCursor()
+    // WholeScoreMoveCursor() //move cursor
     // } else {
     //   SliceOfScoreMoveCursor();
     // }
