@@ -102,6 +102,10 @@ export default function PianoController (props) {
           settings['backTrackVol'] * 100),
       2000
     )
+    setTimeout(
+      () => (document.getElementById('tempo').defaultValue = 100),
+      2000
+    )
 
     setTimeout(() => window.bgcolor(), 1500)
     document.documentElement.style.setProperty(
@@ -112,6 +116,8 @@ export default function PianoController (props) {
     window.getOSMDSizeScale()
     setTimeout(() => window.StartExercise(), 1500)
     // setTimeout(() => window.AddPaddingToCurrsor(), 1500);
+    settings['tempo'] = 100
+    localStorage.setItem('settings', JSON.stringify(settings))
   }, [props.soundFont])
 
   var recording_mode = 'RECORDING'

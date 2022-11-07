@@ -379,36 +379,36 @@ export default function ScoreDisplayAndPlayer ({
       id='cursorOnSVGScore'
       style={{
         position: 'absolute',
-        top: '56px', //cursorData.default.cT * OsmdSize() - 20,
+        top: '226px', //cursorData.default.cT * OsmdSize() - 20,
 
         left: '82px', //cursorData.default.cL * OsmdSize(),
         width: '3px', //cursorData.default.cW,
         height: '263px', //cursorData.default.cH + 40,
         display: 'block',
-        backgroundColor: 'rgba(34, 255, 1, 0.1)',
-        boxShadow: 'inset 0 0 7px #0f0',
+        backgroundColor: 'lime', //'rgba(34, 255, 1, 0.1)',
+        // boxShadow: 'inset 0 0 7px #0f0',
         zIndex: -1,
         border:
           getDarkMode() === 'On' ? '0.1px solid white' : '0.1px solid black',
-        // marginTop: '-100px',
+        marginTop: '-100px',
         transformOrigin: '0% 0% 0px',
         transform: osmdSizeTrans
       }}
     ></p>
   ]
 
-  function InitialiseCursor () {
-    document.getElementById('cursorOnSVGScore').style.top =
-      window.cursorNotes[0][0].cT + 20 + 'px'
-    document.getElementById('cursorOnSVGScore').style.left =
-      window.cursorNotes[0][0].cL + 'px'
-    document.getElementById('cursorOnSVGScore').style.height =
-      window.cursorNotes[0][0].cH + 120 + 'px'
-    console.log(
-      "🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 404 ~ InitialiseCursor ~ document.getElementById('cursorOnSVGScore').style.left",
-      document.getElementById('cursorOnSVGScore').style.left
-    )
-  }
+  // function InitialiseCursor () {
+  //   document.getElementById('cursorOnSVGScore').style.top =
+  //     window.cursorNotes[0][0].cT + 20 + 'px'
+  //   document.getElementById('cursorOnSVGScore').style.left =
+  //     window.cursorNotes[0][0].cL + 'px'
+  //   document.getElementById('cursorOnSVGScore').style.height =
+  //     window.cursorNotes[0][0].cH + 120 + 'px'
+  //   console.log(
+  //     "🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 404 ~ InitialiseCursor ~ document.getElementById('cursorOnSVGScore').style.left",
+  //     document.getElementById('cursorOnSVGScore').style.left
+  //   )
+  // }
 
   // InitialiseCursor()
   //testing counting non rest notes
@@ -575,7 +575,7 @@ export default function ScoreDisplayAndPlayer ({
         setPlayer(my_player)
         setTimeout(() => InitialiseFurther(), 500)
         // setTimeout(() => register_note_from_osmd(my_osmd), 10)
-        setTimeout(() => InitialiseCursor(), 2000)
+        // setTimeout(() => InitialiseCursor(), 2000)
       })
       .catch(e => {
         console.log('OSMD loading ERROR occured...', e)

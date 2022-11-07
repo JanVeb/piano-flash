@@ -130,7 +130,7 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
     // player.playbackManager.reset();
 
     document.getElementById('cursorOnSVGScore').style.top =
-      window.cursorNotes[0][0].cT + 20 + 'px'
+      window.cursorNotes[0][0].cT + 140 + 'px'
     document.getElementById('cursorOnSVGScore').style.left =
       window.cursorNotes[0][0].cL + 'px'
     document.getElementById('cursorOnSVGScore').style.height =
@@ -138,6 +138,7 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
     document
       .getElementById('cursorOnSVGScore')
       .scrollIntoView({ behavior: 'auto', block: 'start' })
+    document.getElementById('cursorOnSVGScore').style.backgroundColor = 'lime'
 
     window.OnStopResetTranslate()
     setPlayPauseIcon(true)
@@ -193,7 +194,8 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
       (GetTempo() / 100)
     cursorLeft = measureSelectedNotes2[cursorIndex][0].cL
     document.getElementById('cursorOnSVGScore').style.top =
-      measureSelectedNotes2[cursorIndex][0].cT * OsmdSize() + 20 + 'px'
+      measureSelectedNotes2[cursorIndex][0].cT * OsmdSize() + 140 + 'px'
+    document.getElementById('cursorOnSVGScore').style.backgroundColor = 'lime'
 
     document
       .getElementById('cursorOnSVGScore')
@@ -232,6 +234,9 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
     } else {
       document.getElementById('cursorOnSVGScore').style.left =
         cursorLeft * OsmdSize() + (fluidIndex * 30) / 30 + 'px'
+    }
+    if (fluidIndex === 15) {
+      document.getElementById('cursorOnSVGScore').style.backgroundColor = 'blue'
     }
   }
 

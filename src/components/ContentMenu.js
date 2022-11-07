@@ -52,9 +52,9 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
     let count = 0
     var oldItems2 =
       JSON.parse(localStorage.getItem(window.selDeck + deckMeasureNumber)) || []
-    var tests2 = new Array()
+    var tests2 = []
     if (Object.keys(oldItems2).length <= 1) {
-      return 0
+      return []
     } else {
       for (let i = 0; i < Object.keys(oldItems2).length; i++) {
         tests2.push(oldItems2[i])
@@ -182,50 +182,74 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
       </div>
       <div
         style={{
-          // display: 'flex',
+          display: 'flex',
           marginLeft: '20px',
-          marginTop: '30px',
+          marginTop: '20px'
+        }}
+      >
+        {' '}
+        BackTrack Volume
+        <p
+          style={{ display: 'flex', marginLeft: '20px', marginTop: '0px' }}
+          id='volumeText'
+        >
+          {GetBackTrackVol() * 100}
+        </p>
+      </div>
+      <div
+        style={{
+          marginLeft: '20px',
           display: pullScoreListUP ? 'none' : 'block'
         }}
       >
-        <p style={{ float: 'left', left: '20px' }} id='volumeText'>
-          {GetBackTrackVol() * 100}
-        </p>
         <input
-          style={{ float: 'left' }}
+          style={{ width: '80%', left: '20px', fill: 'blue', stroke: 'red' }}
           type='range'
           id='backTrackVol'
+          min='0'
+          max='100'
+          fill='blue'
+          stroke='red'
           onChange={SaveBTVolume}
           // value="20" //{GetBackTrackVol}
         />
-
-        <p style={{ left: '20px' }}>BackTrack Volume</p>
       </div>
-      <br></br>
       <div
         style={{
-          // display: 'flex',
+          display: 'flex',
           marginLeft: '20px',
-          marginTop: '30px',
+          marginTop: '10px'
+        }}
+      >
+        {' '}
+        Tempo
+        <p style={{ marginLeft: '20px', marginTop: '0px' }} id='tempoText'>
+          {GetTempo()}
+        </p>
+      </div>
+      <div
+        style={{
+          marginLeft: '20px',
           display: pullScoreListUP ? 'none' : 'block'
         }}
       >
-        <p style={{ float: 'left', left: '20px' }} id='tempoText'>
-          {GetTempo()}
-        </p>
-        <input
-          style={{ float: 'left' }}
-          type='range'
-          min='10'
-          max='400'
-          id='tempo'
-          onChange={SaveTempo}
-          // value="20" //{GetBackTrackVol}
-        />
-
-        <p style={{ left: '20px' }}>Tempo</p>
+        {' '}
       </div>
-      <br></br>
+      <input
+        style={{
+          width: '80%',
+          marginLeft: '20px',
+          color: 'blue',
+          marginTop: '-10px'
+        }}
+        type='range'
+        id='tempo'
+        min='10'
+        max='150'
+        onChange={SaveTempo}
+        // value="20" //{GetBackTrackVol}
+      />
+
       <div
         style={{ display: 'flex', display: pullScoreListUP ? 'none' : 'block' }}
       >
