@@ -1,4 +1,5 @@
 import '../App.css'
+import '../components/webmidi/WebMidi.css'
 // import "../components/stopwatchForTest/styles.css";
 import React, { useState, useEffect, useRef } from 'react'
 // import ReactDOM from "react-dom";
@@ -24,7 +25,7 @@ import FeedbackWindow from '../components/FeedbackWindow'
 import TranslateNotes from '../view/LettersSheet'
 import UserInputWindowF from '../view/UserInputWindow'
 import AboutPage from './About'
-import WebMidiCont from '../components/webmidi/MidiComponent'
+import { WebMidiCont } from '../components/webmidi/MidiComponent'
 
 // import MidiController from '../components/webmidi/WebMidi'
 // import { WebMidi } from 'webmidi';
@@ -291,12 +292,26 @@ export default function Main ({ darkMode, setDarkMode }) {
   function ClearLiveFeedback () {
     setLiveFeedback([])
   }
+  window.onload = function () {
+    var v = 'url = http://hyperaud.io/video/obama-responds.mp4'
+    var p = document.getElementById('pbr')
+    var c = document.getElementById('currentPbr')
+
+    p.addEventListener(
+      'input',
+      function () {
+        c.innerHTML = p.value
+        v.playbackRate = p.value
+      },
+      false
+    )
+  }
 
   return (
     <div>
       {/* <DrawSVGScore /> */}
       {/* <LogueSf2 /> */}
-
+      <WebMidiCont />
       <div id='infoTranslateNoteWindow' className='infoTranslateNoteWindow'>
         <p
           style={{
@@ -412,6 +427,18 @@ export default function Main ({ darkMode, setDarkMode }) {
             className='noteLeter'
             style={{ color: 'white', fontSize: '45px' }}
           ></div>
+        </button>
+        <button
+          // style={{ display: deviceName !== '' ? 'block' : 'none' }}
+          component='span'
+          className='midiButton'
+          id='midiButton'
+          onClick={window.OpenMidiWin}
+        >
+          <p>Midi</p>
+          {/* <Keyboard /> */}
+          {/* <FontAwesomeIcon icon={faPiano} /> */}
+          {/* <i class="fa-solid fa-piano"></i> */}
         </button>
         {/* <button
         id="infoTranslateNoteButton"

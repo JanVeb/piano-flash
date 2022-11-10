@@ -97,6 +97,14 @@ function GetNotesUCur () {
           nM: note.sourceMeasure.MeasureNumberXML,
           sI: note.parentStaffEntry.parentStaff.id,
           iG: note.IsGraceNote,
+          i2ndTie:
+            note.tie != undefined
+              ? note.NoteToGraphicalNoteObjectId ===
+                note.tie.notes[0].NoteToGraphicalNoteObjectId
+                ? false
+                : true
+              : false,
+
           cL: parseInt(
             document
               .getElementById('cursorImg-0')

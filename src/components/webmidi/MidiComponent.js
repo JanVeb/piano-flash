@@ -31,6 +31,7 @@ export function WebMidiCont () {
     '🚀 ~ file: MidiComponent.js ~ line 30 ~ WebMidiCont ~ selDevOut',
     selDevOut
   )
+  window.OpenMidiWin = OpenMidiWin
 
   function CheckMidiDevices () {
     let midiInputDevArr = []
@@ -38,8 +39,15 @@ export function WebMidiCont () {
     // WebMidi.inputs.forEach((input) => midiInputDevArr.push(input.name));
     // setDeviceNameInArr(midiInputDevArr);
     // Outputs
-    WebMidi.outputs.forEach(output => midiOutDevArr.push(output.name))
+    WebMidi.outputs.forEach(output => {
+      return midiOutDevArr.push(output.name)
+    })
     setDeviceNameOutArr(midiOutDevArr)
+    console.log(
+      '🚀 ~ file: MidiComponent.js ~ line 43 ~ CheckMidiDevices ~ WebMidi.outputs',
+      WebMidi.outputs
+    )
+
     return
   }
   //   CheckMidiDevices();

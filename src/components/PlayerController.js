@@ -363,23 +363,25 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
     CheckForGrace(measureSelectedNotes2)
 
     for (let i = 0; i < measureSelectedNotes2[index].length; i++) {
-      if (measureSelectedNotes2[index][i].iG === false) {
-        if (
-          measureSelectedNotes2[index][i].v === 'NaN' ||
-          measureSelectedNotes2[index][i].v === undefined
-        ) {
-          NotesToPlay(
-            measureSelectedNotes2[index][i].n,
-            measureSelectedNotes2[index][i].l * 4 * 1000,
-            correctVolume
-          )
-        } else {
-          NotesToPlay(
-            measureSelectedNotes2[index][i].n,
-            measureSelectedNotes2[index][i].l * 4 * 1000,
-            measureSelectedNotes2[index][i].v
-          )
-          correctVolume = measureSelectedNotes2[index][i].v
+      if (measureSelectedNotes2[index][i].i2ndTie === false) {
+        if (measureSelectedNotes2[index][i].iG === false) {
+          if (
+            measureSelectedNotes2[index][i].v === 'NaN' ||
+            measureSelectedNotes2[index][i].v === undefined
+          ) {
+            NotesToPlay(
+              measureSelectedNotes2[index][i].n,
+              measureSelectedNotes2[index][i].l * 4 * 1000,
+              correctVolume
+            )
+          } else {
+            NotesToPlay(
+              measureSelectedNotes2[index][i].n,
+              measureSelectedNotes2[index][i].l * 4 * 1000,
+              measureSelectedNotes2[index][i].v
+            )
+            correctVolume = measureSelectedNotes2[index][i].v
+          }
         }
       }
     }

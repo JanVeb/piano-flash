@@ -752,6 +752,17 @@ background-color:rgb(20, 35, 245);
   background-size: contain;
 }
 
+.midiButton {
+  display: none;
+  height: 10vh;
+  position: fixed;
+  right: 2px;
+  top: 250px;
+  transition: 0.5s;
+  width: 54px;
+  z-index: 11 !important;
+}
+
 .sixteenth {
   width: 10px;
   height: 10px;

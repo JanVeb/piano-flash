@@ -285,8 +285,10 @@ function GetBackTrackVol () {
 
 export function BackTrackPlay () {
   backTrack.volume(GetBackTrackVol())
+  backTrack.playbackRate = 0.1
   backTrack.play()
 }
+window.BackTrackPlay = BackTrackPlay
 export function BackTrackVol (vol) {
   backTrack.volume(vol)
 }

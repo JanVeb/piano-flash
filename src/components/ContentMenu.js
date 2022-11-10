@@ -12,11 +12,11 @@ import { BackTrackVol } from '../components/howlerFVPiano/HowlerFVPiano'
 
 export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
   function openNav2 () {
-    if (document.getElementById('myNav2').style.width === '60%') {
-      document.getElementById('myNav2').style.width = '0'
+    if (document.getElementById('contentmenu').style.width === '60%') {
+      document.getElementById('contentmenu').style.width = '0'
     } else {
-      document.getElementById('myNav').style.width = '0%'
-      document.getElementById('myNav2').style.width =
+      document.getElementById('setingsMenu').style.width = '0%'
+      document.getElementById('contentmenu').style.width =
         '60%' /** from 100% to 25% **/
     }
   }
@@ -144,7 +144,7 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
   }
 
   return (
-    <div id='myNav2' className='contentSettingsWindow'>
+    <div id='contentmenu' className='contentSettingsWindow'>
       {/* <UploadScore/> */}
 
       <div

@@ -23,11 +23,11 @@ export default function SettingsMenu ({
   /* Open when someone clicks on the span element */
   window.SettingsButton = SettingsButton
   function SettingsButton () {
-    if (document.getElementById('myNav').style.width === '60%') {
-      document.getElementById('myNav').style.width = '0'
+    if (document.getElementById('setingsMenu').style.width === '60%') {
+      document.getElementById('setingsMenu').style.width = '0'
     } else {
-      document.getElementById('myNav2').style.width = '0%'
-      document.getElementById('myNav').style.width =
+      document.getElementById('contentmenu').style.width = '0%'
+      document.getElementById('setingsMenu').style.width =
         '60%' /** from 100% to 25% **/
     }
   }
@@ -400,7 +400,7 @@ export default function SettingsMenu ({
         ></div>
       </button>
 
-      <div id='myNav' className='contentSettingsWindow'>
+      <div id='setingsMenu' className='contentSettingsWindow'>
         <i class='fa-brands fa-discord'></i>
 
         <button

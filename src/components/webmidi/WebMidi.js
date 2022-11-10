@@ -10,6 +10,10 @@ let deviceNameOutArr2 = []
 export function onEnabled () {
   // Display available MIDI input devices
   if (WebMidi.inputs.length < 1) {
+    console.log(
+      '🚀 ~ file: WebMidi.js ~ line 13 ~ onEnabled ~ WebMidi.inputs.length',
+      WebMidi.inputs.length
+    )
     console.log('No device detected.')
   } else {
     document.getElementById('midiButton').style.display = 'block'
@@ -19,6 +23,10 @@ export function onEnabled () {
 
     WebMidi.outputs.forEach(output =>
       console.log(output.manufacturer, output.name)
+    )
+    console.log(
+      '🚀 ~ file: WebMidi.js ~ line 23 ~ onEnabled ~ output.name',
+      WebMidi.outputs
     )
 
     // document.getElementById('midiDevice').innerHTML = deviceNameOutArr;
@@ -35,6 +43,7 @@ export function onEnabled () {
       e => {
         // console.log(`${e.note.number}`);
         PushKeyboardPlay(e.note.number)
+        window.LiveFeedbackNotes(e.note.number)
       },
       {
         channels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
