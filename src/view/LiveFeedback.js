@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
 import { beam1NotePos, beam2NotePos } from '../data/LiveNotesData'
-
-//  = [sixteenth, sixteenth2, sixteenth3]
-
 export default function LiveFeedback ({
   curentCursorNotes,
   liveFeedback,
@@ -124,8 +121,9 @@ export default function LiveFeedback ({
       }} //need to check width issue, if width is less than 5000 score will not render
     >
       <div
-        style={{ position: 'relative', width: 'inherit', height: 'inherit' }}
+        // style={{ position: 'relative', width: 'inherit', height: 'inherit' }}
         id='liveFeedbackNotes'
+        className='liveFeedbackNotes'
       >
         {liveFeedback}
       </div>

@@ -157,6 +157,10 @@ function GetNotesUCur () {
   // return
   cursorNotes = notesCurArr
   window.cursorNotes = cursorNotes
+  console.log(
+    '🚀 ~ file: ScoreDisplayAndPlayer.js ~ line 160 ~ GetNotesUCur ~ cursorNotes',
+    cursorNotes
+  )
   window.ResetOSMDCursor()
   window.osmd.cursor.hide()
 }
@@ -912,7 +916,7 @@ export default function ScoreDisplayAndPlayer ({
           style={{
             marginBottom: '100px',
             marginTop: '100px',
-            // width: osmdScreen + '%',
+            width: osmdScreen + '%',
             transformOrigin: '0% 0% 0px',
             transform: osmdSizeTrans,
             // marginRight: screenWidth,

@@ -349,7 +349,7 @@ export default function ContentMenu ({ setScoreMetaData, scoreMetaData }) {
                   <span style={{ fontSize: '0px' }}>
                     {(window.selDeck = key)}
                   </span>
-                  <span ste={{ color: '#00ff00' }}>
+                  <span style={{ color: '#00ff00' }}>
                     {' '}
                     {countExpiredCards(1)}
                   </span>

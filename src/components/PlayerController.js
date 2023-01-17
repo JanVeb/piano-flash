@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../App.css'
 
 // import { PlayArrow, SkipPrevious, Pause, Spellcheck } from '@material-ui/icons'
-import { IonButton } from '@ionic/react'
+import MetronomeComp from './Metronome'
 
 import {
   NotesToPlay,
@@ -394,8 +394,10 @@ export default function PlayerController ({ player, setCurentCursorNotes }) {
   }
 
   //custom play function
+
   return (
     <div>
+      <MetronomeComp />
       <button
         id='playButton'
         className='playButton'

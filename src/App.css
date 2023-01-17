@@ -594,6 +594,24 @@ background-color:rgb(20, 35, 245);
   border-style: outset
 }
 
+.metronomeButton {
+  background-position: 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  position: fixed;
+  left: 2px;
+  top: 430px;
+  transition: 0.5s;
+  z-index: 10;
+  background-color:rgb(20, 35, 245);
+  color: white;
+  width: 54px;
+  height: 54px;
+  border-radius: 20%;
+  border: 5px solid grey;
+  border-style: outset
+}
+
 .pianoIcon {
   position: absolute;
   top: 10px;
@@ -1011,3 +1029,9 @@ input[type="range"]::-webkit-slider-thumb:hover{
 }
 
 /* Input sliders in content menu END */
+
+.liveFeedbackNotes {
+  width: 200px !important;
+  transform-origin: '0% 0% 0px';
+  transform: scale(0.4);
+}

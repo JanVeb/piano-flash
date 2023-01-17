@@ -139,10 +139,13 @@ export default function Main ({ darkMode, setDarkMode }) {
     autoResize: true,
     followCursor: true,
     disableCursor: false,
-    measureNumberInterval: 1,
+
     // drawingParameters: 'compacttight',
     drawMetronomeMarks: true,
-    drawMeasureNumbers: true,
+    drawMeasureNumbersOnlyAtSystemStart: true,
+    // measureNumberInterval: 1,
+    // drawPartAbbreviations: true,
+    // drawMeasureNumbers: true,
     defaultColorRest: 'white',
     defaultColorMusic:
       getDarkMode() === undefined || getDarkMode() === 'Off'
